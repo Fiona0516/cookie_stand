@@ -28,7 +28,6 @@ function Store(locationName, minCustPerHour, maxCustPerHour, avgCookiesPerCust){
   allStores.push(this);
 
 };
-
 var firstAndPike = new Store('First And Pike',23,65,6.3);
 var seaTacAirport = new Store('SeaTac Airport',3,24,1.2);
 var seattleCenter = new Store('Seattle Center',11,38,3.7);
@@ -39,16 +38,7 @@ console.log(seaTacAirport);
 console.log(seattleCenter);
 console.log(capitolHill);
 console.log(alki);
-//End of constructors
-var dataset = document.getElementById('cookiez');
-function makeHeaderRow(){
-  for( var i = 0; i < globalHours.length; i++){
-    var tableRow = document.createElement('tr');
-    var thElement = document.createElement('th');
-    thElement.textContent = globalHours[i];
-    tableRow.appenChild(thElement);
-  }
-};
+
 //this.calcCookiesEachHour = function(){
   //return Math.floor(this.calCustEachHour() * this.avgCookiesPerCust);
   //}
