@@ -3,7 +3,8 @@
 var globalHours = ['6:00am', '7:00am', '8:00am','9:00am','10:00am','11:00am','12:00pm','1:00pm','2:00pm','3:00pm','4:00pm','5:00pm','6:00pm','7:00pm'];
 var storeListArray = [];
 var salmonTable = document.getElementById('salmonTable');
-function store(location, min, max, ave){
+var newLocationForm = document.getElementById('newLocationForm');
+function Store(location, min, max, ave){
   this.locationName = location;
   this.minCustPerHour = min;
   this.maxCustPerHour = max;
@@ -12,13 +13,14 @@ function store(location, min, max, ave){
   this.cookiesEachHourArray = [];
   this.totalDailyCookieSales = 0;
   this.stringsForDisplayInLists = [];
-
+//calculate random num of cust per hour
   this.calcCustEachHour = function (){
     for (var i = 0; i < globalHours.length; i++) {
       var singleHourCust = Math.floor(Math.random() * (this.maxCustPerHour - this.minCustPerHour + 1)) + this.minCustPerHour;
       this.custEachHourArray.push(singleHourCust);
     }
   };
+  //calculate num of cookies per hour
   this.calcCookiesEachHour = function(){
     for (var i = 0; i < globalHours.length; i++) {
       var singleHourCookies = Math.ceil(this.custEachHourArray[i] * this.avgCookieNumber);
@@ -87,11 +89,31 @@ function makeFooterRow(){
 //call headerRow
 makeHeaderRow();
 //instances
-var firstAndPike = new store('1st and Pike', 23, 65, 6.3);
-var seaTacAirport = new store('SeaTac Airport', 3, 24, 1.2);
-var seattleCenter = new store('Seattle Center', 11, 38, 3.7);
-var capitalHill = new store('Capital Hill', 11, 38, 3.7);
-var alki = new store('Alki', 11, 38, 3.7);
-
+var firstAndPike = new Store('1st and Pike', 23, 65, 6.3);
+var seaTacAirport = new Store('SeaTac Airport', 3, 24, 1.2);
+var seattleCenter = new Store('Seattle Center', 11, 38, 3.7);
+var capitalHill = new Store('Capital Hill', 11, 38, 3.7);
+var alki = new Store('Alki', 11, 38, 3.7);
 //call footerRow
 makeFooterRow();
+
+//create new form
+var storeData = function(event){
+  event.preventDefault();
+  if (!event.target.storeName.value || !event.target.min.value || !event.target.max.value || !event.target.avg.value){
+    return alert('Please enter a value.');
+  }
+  var storeName = event.target.storeName.value;
+  var min = event.target.min.value;
+  var max = event.target.max.value;
+  var avg = event.target.avg.value;
+  console.log('user submit', storeName,min, max, avg);
+
+  var newStore = new Store(storeName,min,max,avg,'newStore');
+};
+
+event.target.storeName.value = null;
+event.target.min.value = null;
+event.target.max.value = null;
+event.target.avg.value = null;
+newLocationForm.addEventListener('submit',storeData);
