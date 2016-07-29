@@ -98,7 +98,7 @@ var alki = new Store('Alki', 11, 38, 3.7);
 makeFooterRow();
 
 //create new form
-var storeData = function(event){
+function storeData(event){
   event.preventDefault();
   if (!event.target.storeName.value || !event.target.min.value || !event.target.max.value || !event.target.avg.value){
     return alert('Please enter a value.');
@@ -112,8 +112,4 @@ var storeData = function(event){
   var newStore = new Store(storeName,min,max,avg,'newStore');
 };
 
-event.target.storeName.value = null;
-event.target.min.value = null;
-event.target.max.value = null;
-event.target.avg.value = null;
 newLocationForm.addEventListener('submit',storeData);
