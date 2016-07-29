@@ -1,16 +1,37 @@
-<!DOCTYPE html>
+<!DOCTYPE>
 <html>
-  <head>
-    <title>Sales Figures for Salmon Cookies</title>
-    <link rel="stylesheet" type="text/css" href="css/style.css">
-    <body>
-      <h1>Salmon Cookies Sales Review</h1>
-      <table id="salmonTable">
-      </table>
+ <head>
+   <title>Cookie Stand</title>
 
 
 
-      <script src = "js/app.js"> </script>
-    </body>
-  </head>
-  </html>
+ </head>
+
+ <body>
+   <header>
+       <h1> Salmon Cookies </h1>
+
+   </header>
+   <form id='newLocationForm'>
+     <fieldset>
+       <label for="storeName"> New Store Location</label>
+       <input name="storeName" type="text"/>
+       <label for="min">Min Number Customer Per Hour</label>
+       <input name="min" type="number"/>
+       <label for="max">Max Number Customer Per Hour</label>
+       <input name="max" type="number"/>
+       <label for="avg">Average Cookie Number</label>
+       <input name="avg" type="number"/>
+       <input type="submit" value="Submit">
+    </fieldset>
+    </form>
+
+
+   <table id="salmonTable"></table>
+
+
+<script src="../js/app.js"> </script>
+</body>
+
+
+</html>
